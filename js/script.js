@@ -1,5 +1,44 @@
 // JavaScript untuk Mieayam1315 Website - Versi Responsif (FIXED)
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            
+            // Ganti ikon menu
+            const icon = this.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        // Tutup mobile menu ketika link diklik
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+            });
+        });
+
+        // Tutup mobile menu ketika klik di luar
+        document.addEventListener('click', function(event) {
+            if (!menuToggle.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+                menuToggle.querySelector('i').classList.add('fa-bars');
+            }
+        });
+    }
+
     // Fallback untuk gambar menu
     document.querySelectorAll('#menu img').forEach(img => {
         img.addEventListener('error', function() {
@@ -34,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Smooth scroll untuk navigasi (FIXED)
-    document.querySelectorAll('nav a').forEach(anchor => {
+    document.querySelectorAll('nav a, .mobile-nav-link').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             
@@ -163,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Perbaikan untuk navigation active state
-    const navLinks = document.querySelectorAll('nav a');
+    const navLinks = document.querySelectorAll('nav a, .mobile-nav-link');
     const sectionsWithNav = document.querySelectorAll('section[id]');
     
     function updateActiveNav() {
@@ -188,13 +227,29 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const style = document.createElement('style');
     style.textContent = `
-        nav a.active {
+        nav a.active, .mobile-nav-link.active {
             color: #ff6b35;
             background-color: rgba(255, 107, 53, 0.1);
         }
         
         header {
             transform: none !important;
+        }
+        
+        /* Animasi untuk mobile menu */
+        #mobileMenu {
+            animation: slideDown 0.3s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     `;
     document.head.appendChild(style);

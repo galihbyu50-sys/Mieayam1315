@@ -25,6 +25,17 @@ header {
     top: 0 !important;
 }
 
+/* Hamburger Menu Button */
+#menuToggle {
+    z-index: 1000;
+}
+
+/* Mobile Menu */
+#mobileMenu {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
 /* Card Tim Profesional */
 .team-card {
     background: rgba(30, 30, 30, 0.7);
@@ -156,23 +167,15 @@ header {
         margin-bottom: 1rem;
     }
     
-    header .flex {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    header nav {
-        margin-top: 0.5rem;
-        width: 100%;
-    }
-    
-    nav ul {
-        justify-content: space-around;
-    }
-    
     .menu-content p, .team-card p, .testimoni-card p {
         word-wrap: break-word;
         overflow-wrap: break-word;
+    }
+    
+    /* Pastikan mobile menu tidak menutupi konten */
+    #mobileMenu {
+        position: relative;
+        z-index: 999;
     }
 }
 
