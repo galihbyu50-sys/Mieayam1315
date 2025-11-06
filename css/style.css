@@ -1,0 +1,204 @@
+/* Custom CSS untuk Mieayam1315 - Versi Responsif */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Animasi untuk section saat di-scroll */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+header {
+    transform: none !important;
+    position: sticky !important;
+    top: 0 !important;
+}
+
+/* Card Tim Profesional */
+.team-card {
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 107, 53, 0.3);
+}
+
+/* Tombol Sosial Media Tim */
+.social-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 0.75rem;
+}
+
+.social-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Card Testimoni Profesional */
+.testimoni-card {
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.testimoni-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #ff6b35, #ff9a3c);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.testimoni-card:hover::before {
+    transform: scaleX(1);
+}
+
+.testimoni-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Efek untuk gambar tim */
+.team-card img {
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Efek glassmorphism */
+.glass {
+    background: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animasi untuk tombol pesan */
+.btn-pesan {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-pesan::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.btn-pesan:hover::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Animasi counter */
+.counter {
+    transition: all 0.5s ease;
+}
+
+/* Perbaikan untuk text overflow */
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 640px) {
+    .team-card, .testimoni-card {
+        margin-bottom: 1rem;
+    }
+    
+    header .flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    header nav {
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+    
+    nav ul {
+        justify-content: space-around;
+    }
+    
+    .menu-content p, .team-card p, .testimoni-card p {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+
+/* Perbaikan untuk tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .team-card, .testimoni-card {
+        margin-bottom: 1.25rem;
+    }
+}
+
+/* Smooth scrolling untuk anchor links */
+html {
+    scroll-padding-top: 80px;
+}
+
+/* Perbaikan untuk gambar placeholder */
+.bg-gray-700 {
+    background-color: #374151;
+}
+
+/* Perbaikan untuk border radius konsisten */
+.rounded-xl {
+    border-radius: 0.75rem;
+}
+
+/* Perbaikan untuk shadow yang konsisten */
+.shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
